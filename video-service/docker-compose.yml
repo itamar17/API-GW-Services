@@ -1,0 +1,5 @@
+services:
+  video-service:
+    build: .
+    ports:
+      - "4568:4568"

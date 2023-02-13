@@ -1,0 +1,9 @@
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "4567:4567"
+  video-service:
+    build: ./video-service
+    ports:
+      - "4568:4568"
