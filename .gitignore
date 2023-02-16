@@ -40,3 +40,16 @@ lerna-debug.log*
 junit.xml
 .env
 openapi.spec.json
+
+user-service/node_modules
+user-service/dist
+
+video-service/node_modules
+video-service/dist
+
+infra/.terraform
+infra/.terraform.lock.hcl
+infra/terraform.tfstate
+infra/terraform.tfstate.backup
+
+scripts/node_modules
