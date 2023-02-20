@@ -7,3 +7,7 @@ services:
     build: ./video-service
     ports:
       - "4568:4568"
+  web:
+    image: nginx
+    ports:
+      - "80:80"

@@ -4,8 +4,8 @@ resource "aws_instance" "be" {
 
   associate_public_ip_address = true
   # the VPC subnet
-  subnet_id = var.SUBNET_ID
-#  subnet_id = aws_subnet.main-public-1.id
+#  subnet_id = var.SUBNET_ID
+  subnet_id = aws_subnet.main-public-1.id
 
   # the security group
   vpc_security_group_ids = [aws_security_group.allow-all.id]

@@ -8,12 +8,12 @@ function main() {
     const mergeResult = merge([{
         oas: userServiceOpenAPISpec,
         pathModification: {
-            prepend: '/user-service'
+            prepend: ''
         }
     }, {
         oas: videoServiceOpenAPISpec,
         pathModification: {
-            prepend: '/video-service'
+            prepend: ''
         }
     }])
 

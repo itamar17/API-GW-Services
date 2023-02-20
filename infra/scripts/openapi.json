@@ -26,6 +26,12 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "GET",
+          "payloadFormatVersion": "1.0",
+          "type": "HTTP_PROXY",
+          "uri": "${URL}:4567/v1/user"
         }
       },
       "post": {
@@ -42,6 +48,12 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "POST",
+          "payloadFormatVersion": "1.0",
+          "type": "HTTP_PROXY",
+          "uri": "${URL}:4567/v1/user"
         }
       }
     },
@@ -69,6 +81,15 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "GET",
+          "payloadFormatVersion": "1.0",
+          "type": "HTTP_PROXY",
+          "uri": "${URL}:4567/v1/user/{id}",
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
+          }
         }
       }
     },
@@ -90,6 +111,12 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "GET",
+          "payloadFormatVersion": "1.0",
+          "type": "HTTP_PROXY",
+          "uri": "${URL}:4568/v1/video"
         }
       }
     },
@@ -116,6 +143,15 @@
                 }
               }
             }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "GET",
+          "payloadFormatVersion": "1.0",
+          "type": "HTTP_PROXY",
+          "uri": "${URL}:4568/v1/video/{id}",
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
           }
         }
       }
