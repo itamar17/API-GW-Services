@@ -1,0 +1,23 @@
+service: authorizers
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 256
+  timeout: 3
+  region: us-east-2
+  profile: 252448032962_ApiGwPOCPermissionSet
+
+functions:
+  tokenBasedAuthorizer:
+    handler: src/handlers/tokenBasedAuthorizer.handler
+    name: basicAuth
+
+
+plugins:
+  - serverless-bundle
+custom:
+  bundle:
+    linting: false

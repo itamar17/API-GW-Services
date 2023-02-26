@@ -16,11 +16,3 @@ variable "PATH_TO_PRIVATE_KEY" {
 variable "PATH_TO_PUBLIC_KEY" {
   default = "mykey.pub"
 }
-
-variable "VPC_ID" {
-  default = "vpc-0344380946d8c6437"
-}
-
-variable "SUBNET_ID" {
-  default = "subnet-0e2b43441227a1c29"
-}

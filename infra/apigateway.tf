@@ -1,7 +1,7 @@
 data "template_file" "openapi-schema" {
   template = file("scripts/openapi.json")
   vars     = {
-    URL = "http://${aws_instance.be.public_dns}"
+    URL = "http://${aws_lb.alb.dns_name}"
   }
 }
 
@@ -31,11 +31,12 @@ resource "aws_api_gateway_stage" "dev" {
   deployment_id = aws_api_gateway_deployment.poc.id
   rest_api_id   = aws_api_gateway_rest_api.poc.id
   stage_name    = "dev"
-
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.apigw_access_logs.arn
     format          = "$context.identity.sourceIp $context.identity.caller  $context.identity.user [$context.requestTime] $context.httpMethod $context.resourcePath $context.protocol $context.status $context.responseLength $context.requestId $context.extendedRequestId"
   }
+  cache_cluster_enabled = true
+  cache_cluster_size = "0.5"
 }
 
 // Enabling logging
@@ -69,9 +70,11 @@ resource "aws_api_gateway_method_settings" "general_settings" {
     data_trace_enabled     = true
     logging_level          = "INFO"
     # Limit the rate of calls to prevent abuse and unwanted charges
-    throttling_rate_limit  = 100
-    throttling_burst_limit = 50
+    throttling_rate_limit  = 1
+    throttling_burst_limit = 2
 
     // TODO: caching is also defined here
+    caching_enabled = true
+    cache_ttl_in_seconds = 5
   }
 }
